@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { HeroPickerLanding } from "@/components/HeroPickerLanding";
+import { HeroPickerLanding } from "../components/HeroPickerLanding";
 
 export const Route = createFileRoute("/")({
   component: Index,
