@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Swords, Search, Shield, Crosshair, Sparkles, Users } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -25,6 +25,11 @@ export function HeroPickerLanding() {
   const [steamId, setSteamId] = useState("");
   const [role, setRole] = useState<string>("");
   const [includeProfile, setIncludeProfile] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const canSubmit = steamId.trim().length > 0 && role.length > 0;
 
@@ -49,9 +54,9 @@ export function HeroPickerLanding() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--background)_85%)]" />
       </div>
 
-      {/* Floating embers */}
+      {/* Floating embers (client-only to avoid hydration mismatch) */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        {Array.from({ length: 18 }).map((_, i) => (
+        {mounted && Array.from({ length: 18 }).map((_, i) => (
           <motion.span
             key={i}
             className="absolute block h-1 w-1 rounded-full bg-ember"
@@ -74,7 +79,7 @@ export function HeroPickerLanding() {
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-10">
         {/* Header */}
         <motion.header
-          initial={{ opacity: 0, y: -16 }}
+          initial={mounted ? { opacity: 0, y: -16 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           className="flex items-center justify-center gap-4 pt-4"
@@ -96,7 +101,7 @@ export function HeroPickerLanding() {
 
         {/* Hero copy */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
+          initial={mounted ? { opacity: 0, y: 20 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
           className="mx-auto mt-12 max-w-3xl text-center"
@@ -115,7 +120,7 @@ export function HeroPickerLanding() {
 
         {/* Form Card */}
         <motion.section
-          initial={{ opacity: 0, y: 30 }}
+          initial={mounted ? { opacity: 0, y: 30 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="ornate-frame mx-auto mt-14 w-full max-w-2xl rounded-lg p-8 sm:p-10"
