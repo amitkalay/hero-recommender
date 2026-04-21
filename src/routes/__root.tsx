@@ -37,6 +37,10 @@ export const Route = createRootRoute({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Dota 2 Hero Picker — Find Your Perfect Match" },
+      { name: "twitter:description", content: "Get personalized Dota 2 hero recommendations based on your Steam play history and preferred role." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f70c25aa-0d7f-4281-90fa-71acff066c81/id-preview-fba3aa8b--2c3b9c39-ca6c-443b-a90a-266dc802b9ea.lovable.app-1776789745888.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/f70c25aa-0d7f-4281-90fa-71acff066c81/id-preview-fba3aa8b--2c3b9c39-ca6c-443b-a90a-266dc802b9ea.lovable.app-1776789745888.png" },
     ],
     links: [
       {
