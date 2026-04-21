@@ -101,7 +101,7 @@ export function HeroPickerLanding() {
 
         {/* Hero copy */}
         <motion.section
-          initial={{ opacity: 0, y: 20 }}
+          initial={mounted ? { opacity: 0, y: 20 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
           className="mx-auto mt-12 max-w-3xl text-center"
@@ -120,7 +120,7 @@ export function HeroPickerLanding() {
 
         {/* Form Card */}
         <motion.section
-          initial={{ opacity: 0, y: 30 }}
+          initial={mounted ? { opacity: 0, y: 30 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="ornate-frame mx-auto mt-14 w-full max-w-2xl rounded-lg p-8 sm:p-10"
