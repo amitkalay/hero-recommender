@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Swords, Search, Shield, Crosshair, Sparkles, Users } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -25,6 +25,11 @@ export function HeroPickerLanding() {
   const [steamId, setSteamId] = useState("");
   const [role, setRole] = useState<string>("");
   const [includeProfile, setIncludeProfile] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const canSubmit = steamId.trim().length > 0 && role.length > 0;
 
@@ -49,9 +54,9 @@ export function HeroPickerLanding() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--background)_85%)]" />
       </div>
 
-      {/* Floating embers */}
+      {/* Floating embers (client-only to avoid hydration mismatch) */}
       <div className="pointer-events-none absolute inset-0 -z-10">
-        {Array.from({ length: 18 }).map((_, i) => (
+        {mounted && Array.from({ length: 18 }).map((_, i) => (
           <motion.span
             key={i}
             className="absolute block h-1 w-1 rounded-full bg-ember"
