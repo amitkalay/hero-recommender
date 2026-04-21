@@ -79,7 +79,7 @@ export function HeroPickerLanding() {
       <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col px-6 py-10">
         {/* Header */}
         <motion.header
-          initial={{ opacity: 0, y: -16 }}
+          initial={mounted ? { opacity: 0, y: -16 } : false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           className="flex items-center justify-center gap-4 pt-4"
