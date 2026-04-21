@@ -45,6 +45,14 @@ export function HeroPickerLanding() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!steamId.trim()) {
+      setError("Please enter your Steam ID.");
+      return;
+    }
+    if (!role) {
+      setError("Please pick a role before revealing heroes.");
+      return;
+    }
     setLoading(true);
     setError(null);
     setResults(null);
