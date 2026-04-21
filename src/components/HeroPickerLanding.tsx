@@ -246,6 +246,8 @@ export function HeroPickerLanding() {
           </form>
         </motion.section>
 
+        <HeroResults loading={loading} error={error} results={results} />
+
         {/* Footer */}
         <footer className="mt-auto pt-16 text-center text-xs text-muted-foreground">
           <div className="ember-divider mx-auto mb-4 w-40 opacity-50" />
