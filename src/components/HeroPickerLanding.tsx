@@ -237,12 +237,12 @@ export function HeroPickerLanding() {
             {/* Submit */}
             <Button
               type="submit"
-              disabled={!canSubmit}
+              disabled={loading}
               className="group relative h-14 w-full overflow-hidden rounded-md border border-gold/60 bg-gradient-to-r from-ember to-accent font-display text-base font-bold uppercase tracking-[0.25em] text-primary-foreground shadow-[0_0_30px_oklch(0.6_0.22_35/0.45)] transition-all hover:shadow-[0_0_45px_oklch(0.6_0.22_35/0.7)] disabled:opacity-50 disabled:shadow-none"
             >
               <span className="relative z-10 flex items-center justify-center gap-3">
                 <Swords className="h-5 w-5" />
-                Reveal My Heroes
+                {loading ? "Summoning…" : "Reveal My Heroes"}
               </span>
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </Button>
