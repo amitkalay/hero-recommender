@@ -12,6 +12,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  fetchHeroes,
+  fetchRecentMatches,
+  topHeroes,
+  type HeroStat,
+} from "@/lib/opendota";
+import { HeroResults } from "@/components/HeroResults";
 
 const ROLES = [
   { value: "carry", label: "Carry", desc: "Late-game damage dealer", icon: Crosshair },
@@ -26,6 +33,9 @@ export function HeroPickerLanding() {
   const [role, setRole] = useState<string>("");
   const [includeProfile, setIncludeProfile] = useState(true);
   const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [results, setResults] = useState<HeroStat[] | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -33,10 +43,27 @@ export function HeroPickerLanding() {
 
   const canSubmit = steamId.trim().length > 0 && role.length > 0;
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Recommendation flow to be wired in a future iteration
-    console.log({ steamId, role, includeProfile });
+    setLoading(true);
+    setError(null);
+    setResults(null);
+    try {
+      const [heroes, matches] = await Promise.all([
+        fetchHeroes(),
+        fetchRecentMatches(steamId),
+      ]);
+      const top = topHeroes(matches, heroes, 3);
+      if (top.length === 0) {
+        setError("Couldn't compute hero stats from the recent matches.");
+      } else {
+        setResults(top);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -218,6 +245,8 @@ export function HeroPickerLanding() {
             </p>
           </form>
         </motion.section>
+
+        <HeroResults loading={loading} error={error} results={results} />
 
         {/* Footer */}
         <footer className="mt-auto pt-16 text-center text-xs text-muted-foreground">
