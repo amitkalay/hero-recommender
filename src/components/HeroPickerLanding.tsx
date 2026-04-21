@@ -105,7 +105,7 @@ export function HeroPickerLanding() {
             <Sparkles className="h-3.5 w-3.5" /> Powered by your match history
           </p>
           <h2 className="font-display text-5xl font-black uppercase leading-tight tracking-tight text-foreground sm:text-6xl md:text-7xl">
-            Find Your <span className="text-gradient-ember">Perfect</span> Match
+            Find Your <span className="text-gradient-ember">IMPerfect</span> Match
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
             Drop your Steam ID, choose a role, and we&apos;ll forge three hero recommendations
