@@ -168,8 +168,6 @@ export function HeroPickerLanding() {
               </div>
             </div>
 
-            {/* Role */}
-            <div className="space-y-3">
             {/* Include Profile */}
             <label className="flex cursor-pointer items-start gap-3 rounded-md border border-border bg-secondary/40 p-4 transition-colors hover:border-ember/50">
               <Checkbox
