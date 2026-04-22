@@ -179,9 +179,7 @@ export function HeroPickerLanding() {
                 <p className="font-display text-sm font-semibold uppercase tracking-wide text-foreground">
                   Include Profile Data
                 </p>
-                <p className="text-sm text-muted-foreground">
-                  Pull last 30 matches for sharper recommendations. Uncheck for role-based only.
-                </p>
+                <p className="text-sm text-muted-foreground">Pull last 30 matches for sharper recommendations.</p>
               </div>
             </label>
 
