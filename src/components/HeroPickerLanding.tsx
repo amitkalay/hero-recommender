@@ -170,31 +170,6 @@ export function HeroPickerLanding() {
 
             {/* Role */}
             <div className="space-y-3">
-              <label className="font-display text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                Select Desired Role
-              </label>
-              <Select value={role} onValueChange={setRole}>
-                <SelectTrigger className="h-12 border-border bg-input/60 font-body text-base text-foreground focus:border-ember focus:ring-ember/30 [&_svg]:text-ember">
-                  <SelectValue placeholder="Choose your battlefield position…" />
-                </SelectTrigger>
-                <SelectContent className="border-border bg-popover">
-                  {ROLES.map(({ value, label, desc, icon: Icon }) => (
-                    <SelectItem key={value} value={value} className="py-3 focus:bg-secondary">
-                      <div className="flex items-center gap-3">
-                        <Icon className="h-4 w-4 text-ember" />
-                        <div className="flex flex-col">
-                          <span className="font-display font-semibold uppercase tracking-wide text-foreground">
-                            {label}
-                          </span>
-                          <span className="text-xs text-muted-foreground">{desc}</span>
-                        </div>
-                      </div>
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
             {/* Include Profile */}
             <label className="flex cursor-pointer items-start gap-3 rounded-md border border-border bg-secondary/40 p-4 transition-colors hover:border-ember/50">
               <Checkbox
