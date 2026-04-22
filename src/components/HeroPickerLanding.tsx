@@ -1,17 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Swords, Search, Shield, Crosshair, Sparkles, Users } from "lucide-react";
+import { Swords, Search, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   fetchHeroes,
   fetchRecentMatches,
@@ -20,17 +13,8 @@ import {
 } from "@/lib/opendota";
 import { HeroResults } from "@/components/HeroResults";
 
-const ROLES = [
-  { value: "carry", label: "Carry", desc: "Late-game damage dealer", icon: Crosshair },
-  { value: "mid", label: "Midlaner", desc: "Solo lane tempo controller", icon: Sparkles },
-  { value: "offlane", label: "Offlaner", desc: "Frontline initiator", icon: Shield },
-  { value: "support", label: "Support", desc: "Vision & utility", icon: Users },
-  { value: "hard-support", label: "Hard Support", desc: "Sacrificial protector", icon: Shield },
-];
-
 export function HeroPickerLanding() {
   const [steamId, setSteamId] = useState("");
-  const [role, setRole] = useState<string>("");
   const [includeProfile, setIncludeProfile] = useState(true);
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -41,16 +25,10 @@ export function HeroPickerLanding() {
     setMounted(true);
   }, []);
 
-  const canSubmit = steamId.trim().length > 0 && role.length > 0;
-
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!steamId.trim()) {
       setError("Please enter your Steam ID.");
-      return;
-    }
-    if (!role) {
-      setError("Please pick a role before revealing heroes.");
       return;
     }
     setLoading(true);
