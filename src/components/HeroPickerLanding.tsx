@@ -126,7 +126,7 @@ export function HeroPickerLanding() {
             Find Your <span className="text-gradient-ember">Perfect</span> Match
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-            Drop your Steam ID, choose a role, and we&apos;ll forge three hero recommendations
+            Drop your Steam ID and we&apos;ll forge three hero recommendations
             tuned to your playstyle and recent performance.
           </p>
         </motion.section>
