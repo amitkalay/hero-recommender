@@ -4,7 +4,6 @@ import { Swords, Search, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   fetchHeroes,
   fetchRecentMatches,
@@ -15,7 +14,6 @@ import { HeroResults } from "@/components/HeroResults";
 
 export function HeroPickerLanding() {
   const [steamId, setSteamId] = useState("");
-  const [includeProfile, setIncludeProfile] = useState(true);
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -159,21 +157,6 @@ export function HeroPickerLanding() {
                 />
               </div>
             </div>
-
-            {/* Include Profile */}
-            <label className="flex cursor-pointer items-start gap-3 rounded-md border border-border bg-secondary/40 p-4 transition-colors hover:border-ember/50">
-              <Checkbox
-                checked={includeProfile}
-                onCheckedChange={(v) => setIncludeProfile(Boolean(v))}
-                className="mt-0.5 border-ember data-[state=checked]:bg-ember data-[state=checked]:text-primary-foreground"
-              />
-              <div className="space-y-1">
-                <p className="font-display text-sm font-semibold uppercase tracking-wide text-foreground">
-                  Include Profile Data
-                </p>
-                <p className="text-sm text-muted-foreground">Pull last 30 matches for sharper recommendations.</p>
-              </div>
-            </label>
 
             {/* Submit */}
             <Button
