@@ -25,6 +25,7 @@ export function HeroPickerLanding() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("[HeroPicker] onSubmit fired", { steamId });
     if (!steamId.trim()) {
       setError("Please enter your Steam ID.");
       return;
