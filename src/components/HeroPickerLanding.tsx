@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Swords, Search, Sparkles } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -18,14 +18,20 @@ export function HeroPickerLanding() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [results, setResults] = useState<HeroStat[] | null>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (results || error || loading) {
+      resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [results, error, loading]);
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("[HeroPicker] onSubmit fired", { steamId });
     if (!steamId.trim()) {
       setError("Please enter your Steam ID.");
       return;
@@ -179,7 +185,9 @@ export function HeroPickerLanding() {
           </form>
         </motion.section>
 
-        <HeroResults loading={loading} error={error} results={results} />
+        <div ref={resultsRef}>
+          <HeroResults loading={loading} error={error} results={results} />
+        </div>
 
         {/* Footer */}
         <footer className="mt-auto pt-16 text-center text-xs text-muted-foreground">
