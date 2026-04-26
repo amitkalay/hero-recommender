@@ -139,14 +139,6 @@ export function HeroPickerLanding() {
           className="ornate-frame mx-auto mt-14 w-full max-w-2xl rounded-lg p-8 sm:p-10"
         >
           <form onSubmit={onSubmit} className="space-y-7">
-            <div className="flex items-center gap-3 border-b border-border pb-4">
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-gold/60" />
-              <h3 className="font-display text-xl font-bold uppercase tracking-[0.25em] text-gold">
-                Summon Recommendations
-              </h3>
-              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-gold/60" />
-            </div>
-
             {/* Steam ID */}
             <div className="space-y-2">
               <label
